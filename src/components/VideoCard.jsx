@@ -12,15 +12,16 @@ function VideoCard({
   title,
   videoUrl,
   profileImage,
-  width
 }) {
   const navigate = useNavigate();
   return (
     <div
-      className={`${!width?("max-[375px]:w-[320px] max-[639px]:w-[360px] sm:w-[320px] md:w-[310px]"):width} overflow-hidden md:max-h-420px mb-3 md:mx-2 rounded-md`}
-      onClick={() => navigate(`/video/${author?._id}/${_id}`)}
+      className="w-full h-full"
+      onClick={() => {
+        navigate(`/video/${author?._id}/${_id}`)
+      }}
     >
-      <div className="w-full h-[200px] sm:h-[220px] overflow-hidden rounded-lg bg-black">
+      <div className="w-full h-2/3 overflow-hidden md:rounded-lg bg-black">
         {thumbnailUrl && <img src={thumbnailUrl} className="w-full h-full" />}
       </div>
       <div className="flex p-1">

@@ -3,7 +3,8 @@ import userApi from "./api/userApi"
 import { useEffect, useState } from "react"
 import {useDispatch} from "react-redux"
 import {login, logout} from "./store/authSlice.js"
-import Logout from "./components/Logout.jsx"
+import Logo from "./components/Logo.jsx"
+import Loader from "./components/Loader.jsx"
 
 function App() {
   const dispatch = useDispatch()
@@ -15,9 +16,9 @@ function App() {
     .finally(()=>setLoading(false))
   },[])
   return (
-    <div className=" max-w-screen min-h-screen">
+    <div className=" max-w-screen min-h-screen overflow-x-hidden">
       
-    {loading?"Loading...":<Outlet/>}
+    {loading?<Loader><Logo/></Loader>:<Outlet/>}
     </div>
   )
 }

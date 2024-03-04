@@ -6,7 +6,6 @@ class UserApi{
             const response = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/register",data)
             console.log(response.data);
         } catch (error) {
-            console.log(error);
             throw error
         }
     }
@@ -15,7 +14,6 @@ class UserApi{
             const response = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/login",data)
             return response.data
         } catch (error) {
-            console.log(error);
             throw error
         }
     }
@@ -24,7 +22,6 @@ class UserApi{
             const res = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/currentuser")
             return res.data
         }catch(error){
-            console.log(error)
             throw error
         }
     }

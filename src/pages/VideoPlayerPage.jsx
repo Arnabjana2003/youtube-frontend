@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PlayVideo from "../components/PlayVideo.jsx"
 import SuggestedVideos from '../components/SuggestedVideos.jsx'
 import { useParams } from 'react-router-dom'
@@ -8,13 +8,16 @@ import UploadBar from '../components/UploadBar.jsx'
 
 function VideoPlayerPage() {
   const {channelId,videoId} = useParams()
+  // useEffect(()=>{},[channelId,videoId])
   return (
     <div>
       <Header/>
       <UploadBar/>
-      <div className='md:flex justify-around'>
+      <div className='md:grid grid-cols-12 gap-10'>
+        <div className='col-span-7 lg:col-span-8 md:p-3'>
         <PlayVideo videoId={videoId}/>
-        <div className='md:ml-10 flex justify-center'>
+        </div>
+        <div className='col-span-5 lg:col-span-4 md:p-3'>
         <SuggestedVideos channelId={channelId}/>
         </div>
     </div>

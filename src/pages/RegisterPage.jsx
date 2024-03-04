@@ -17,11 +17,12 @@ function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [data, setData] = useState({});
+  const [error,setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.target.disabled = true;
     if (data.password1 !== data.password) {
-      alert("Wrong confirm password");
+      setError("Wrong confirm password");
       e.target.disabled = false;
       return;
     }
@@ -37,7 +38,7 @@ function RegisterPage() {
         alert(res.message);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.error);
       })
       .finally(() => {
         setData(initialData);
@@ -196,6 +197,7 @@ function RegisterPage() {
             Register
           </button>
         </div>
+        <p className="text-red-500 text-center mt-2">{error ? error : null}</p>
         <p className="text-center mt-2 opacity-70 text-sm">
           Existing user?{" "}
           <span

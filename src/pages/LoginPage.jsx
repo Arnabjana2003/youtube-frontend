@@ -6,24 +6,35 @@ import { useDispatch } from "react-redux";
 import { login, logout } from "../store/authSlice";
 
 function LoginPage() {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const initialaData = { userName: "", email: "", password: "" };
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState(initialaData);
+  const [error, setError] = useState(null);
 
-  const handleClick = (e)=>{
-    if(!(data.userName || data.email)){
-        return alert("Username or email must required")
+  const handleClick = (e) => {
+    setError(null);
+    e.target.disabled = true;
+    if (!(data.userName || data.email)) {
+      setError("Username or email must required");
+      e.target.disabled = false;
+      return;
     }
-    
-    userApi.login(data)
-    .then((res)=>{
-        console.log("data is",res.data.userDetails);
-        dispatch(login(res.data.userDetails))
-    })
-    .catch(()=>dispatch(logout()))
-  }
+    userApi
+      .login(data)
+      .then((res) => {
+        dispatch(login(res.data.userDetails));
+      })
+      .catch((err) => {
+        setError(err.response.data.error);
+        dispatch(logout());
+      })
+      .finally(() => {
+        e.target.disabled = false;
+        setData(initialaData)
+      });
+  };
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
       <div className="my-4">
@@ -86,23 +97,26 @@ function LoginPage() {
             name="password"
             value={data.password}
             onChange={(e) =>
-            setData({ ...data, [e.target.name]: e.target.value })
+              setData({ ...data, [e.target.name]: e.target.value })
             }
             required
           />
           <button
-            className="absolute bottom-3 right-6 text-sm opacity-50"
+            className="absolute bottom-3 right-6 md:right-8 text-sm opacity-50"
             onClick={() => setShowPassword((prev) => !prev)}
           >
             show
           </button>
         </div>
         <div className=" flex justify-center">
-          <button className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-400 font-semibold"
-          onClick={handleClick}>
+          <button
+            className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-400 disabled:bg-purple-300 font-semibold"
+            onClick={handleClick}
+          >
             Login
           </button>
         </div>
+        <p className="text-red-500 text-center mt-2">{error ? error : null}</p>
         <p className="text-center my-2 opacity-70 text-sm">
           New user?{" "}
           <span

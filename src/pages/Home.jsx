@@ -4,24 +4,35 @@ import VideoCard from "../components/VideoCard";
 import Menu from "../components/Menu";
 import Header from "../components/Header";
 import UploadBar from "../components/UploadBar";
+import Loader from "../components/Loader";
 
 function Home() {
   const [videos, setVideos] = useState([]);
+  const [loading,setLoading] = useState(false)
   useEffect(() => {
+    setLoading(true)
     videosApi
       .getAllVideos()
       .then((res) => {
         setVideos(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+        alert(err.response.data.error)
+      })
+      .finally(()=>{
+        setLoading(false)
+      })
   }, []);
+
+  
   return (
-    <div className="">
+    <div className="md:p-3">
       <Header/>
       <UploadBar/>
-        <div className="flex justify-evenly md:justify-between mt-5  flex-wrap  pb-28">
-        {videos.map((video) => (
-        <div key={video._id}>
+        <div className="md:grid md:grid-cols-9 lg:grid-cols-12 md:grid-rows-6 lg:grid-rows-9 gap-3 mt-5 pb-28 ">
+          {loading && <Loader><p>Loading Videos</p></Loader>}
+        {!loading && videos.map((video) => (
+        <div key={video._id} className="col-span-3 row-span-3 pt-3">
           <VideoCard
           _id={video._id}
             title={video.title}

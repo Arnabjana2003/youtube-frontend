@@ -8,7 +8,7 @@ function Logout() {
     const handleClick = async()=>{
         userApi.logout()
         .then(()=>dispatch(logout()))
-        .catch(err=>console.log("Louout err:",err))
+        .catch(err=>alert("Louout error:",err.response.data.error))
     }
   return (
     <div onClick={handleClick}>Logout</div>
