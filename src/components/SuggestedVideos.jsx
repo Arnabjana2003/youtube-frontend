@@ -5,6 +5,7 @@ import videosApi from "../api/videosApi.js"
 function SuggestedVideos({channelId}) {
     const [videoLsit,setVideoList] = useState([])
     useEffect(()=>{
+      console.log(channelId)
       videosApi.getSuggestedVideos(channelId)
       .then((res)=>setVideoList(res.data))
       .catch(err=>console.log(err))

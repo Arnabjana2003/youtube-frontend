@@ -24,7 +24,7 @@ class VideosApi{
 
     getSuggestedVideos = async (channelId)=>{
         try{
-            const suggestedVideos = await axios.get(`https://youtubebackend-one.vercel.app/api/v1/video/suggestedVideos/${channelId}`)
+            const suggestedVideos = await axios.get(`https://youtubebackend-one.vercel.app/api/v1/video/suggestedvideos/${channelId}`)
             return suggestedVideos.data;
         }catch (error) {
             console.log("ERROR AT VIDEOSAPI:: ",error.message);

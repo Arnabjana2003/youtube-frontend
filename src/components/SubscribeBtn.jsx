@@ -4,7 +4,8 @@ import axios from "axios"
 function SubscribeBtn({isSubscribed,channelId,updateFunc}) {
   const [subscribed,setSubscribed] = useState(isSubscribed)
   const handleClick = ()=>{
-    axios.post("/api/v1/subscription/subscribe",{channelId})
+    console.log(channelId)
+    axios.post("https://youtubebackend-one.vercel.app/api/v1/subscription/subscribe",{channelId})
     .then(()=>{
       updateFunc()
       setSubscribed(true)

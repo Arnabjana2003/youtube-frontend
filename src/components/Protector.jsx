@@ -9,7 +9,7 @@ function Protector({authentication = false,children}) {
     useEffect(()=>{
         if(authentication && !authStatus) navigate("/login")
         if(!authentication && authStatus) navigate("/")
-    },[authStatus])
+    })
   return (
     <div>
         {children}
