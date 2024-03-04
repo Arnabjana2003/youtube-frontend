@@ -17,7 +17,10 @@ function PlayVideo({videoId}) {
   const [viewDes,SetViewDes] = useState(false)
   const [subscriberCount,setSubscriberCount] = useState(0)
   const [videoUrl,setVideoUrl] = useState()
+
+
   useEffect(()=>{
+    console.log("PlayVideo com rerendered");
     videosApi.playVideo(videoId)
     .then((res)=>{
       setVideoData(res.data)
