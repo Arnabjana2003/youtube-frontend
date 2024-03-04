@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import likeApi from '../api/likeApi'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { likeVideo } from '../store/videoSlice'
 
-function LikeBtn({id,type}) {
+function LikeBtn({id,type="video"}) {
   const dispatch = useDispatch()
   const authStatus = useSelector(state=>state.auth.authStatus)
-  const navigate = useNavigate()
   const videoDetails = useSelector(state=>state.video.videoDetails)
 
   const handleClick = ()=>{
     if(!authStatus){
-      navigate("/login")
+      alert("Login to like videos")
       return 
     }
     if(type == "video"){

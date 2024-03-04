@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import DragAndDrop from "../components/DragAndDrop.jsx";
 import UploadBar from "../components/UploadBar.jsx";
+import Header from "../components/Header.jsx"
 import videosApi from "../api/videosApi";
 import { setUploadingStatus } from "../store/uploadingStatusSlice";
 import {useDispatch} from "react-redux"
@@ -57,6 +58,7 @@ function UploadVideoPage() {
   }
   return (
     <div className="w-full p-3">
+      <Header/>
       <UploadBar/>
       {!videoFile && (
         <div className="flex w-full h-screen justify-center items-center">

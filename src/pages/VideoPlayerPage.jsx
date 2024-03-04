@@ -3,6 +3,7 @@ import PlayVideo from "../components/PlayVideo.jsx"
 import SuggestedVideos from '../components/SuggestedVideos.jsx'
 import { useParams } from 'react-router-dom'
 import Header from '../components/Header.jsx'
+import Menu from '../components/Menu.jsx'
 import UploadBar from '../components/UploadBar.jsx'
 
 function VideoPlayerPage() {
@@ -17,6 +18,7 @@ function VideoPlayerPage() {
         <SuggestedVideos channelId={channelId}/>
         </div>
     </div>
+    <Menu/>
     </div>
   )
 }
