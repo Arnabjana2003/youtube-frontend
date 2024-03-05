@@ -3,7 +3,7 @@ import axios from "axios"
 class UserApi{
     register = async (data)=>{
         try {
-            const response = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/register",data)
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/user/register`,data)
             console.log(response.data);
         } catch (error) {
             throw error
@@ -11,7 +11,7 @@ class UserApi{
     }
     login = async(data)=>{
         try {
-            const response = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/login",data)
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/user/login`,data)
             return response.data
         } catch (error) {
             throw error
@@ -19,7 +19,7 @@ class UserApi{
     }
     getCurrentUser = async()=>{
         try{
-            const res = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/currentuser")
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/user/currentuser`)
             return res.data
         }catch(error){
             throw error
@@ -27,7 +27,7 @@ class UserApi{
     }
     logout = async()=>{
         try{
-            const res = await axios.post("https://youtubebackend-one.vercel.app/api/v1/user/logout")
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/user/logout`)
             return res.data
         }catch(error){
             throw error
@@ -36,7 +36,7 @@ class UserApi{
 
     getChannelInfo = async(channelId)=>{
         try {
-            const info = await axios.get(`https://youtubebackend-one.vercel.app/api/v1/user/channel/${channelId}`)
+            const info = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/user/channel/${channelId}`)
             return info.data
         } catch (error) {
             throw error
