@@ -6,7 +6,7 @@ import DislikeBtn from "./DislikeBtn";
 import ShareBtn from "./ShareBtn";
 import videosApi from "../api/videosApi";
 import { useDispatch, useSelector } from "react-redux";
-import { videoDetails } from "../store/videoSlice";
+import { videoDetails } from "../store/playedVideoSlice.js";
 import { useNavigate } from "react-router-dom";
 
 function PlayVideo({videoId}) {

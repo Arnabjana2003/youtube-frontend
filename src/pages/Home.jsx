@@ -5,10 +5,13 @@ import Menu from "../components/Menu";
 import Header from "../components/Header";
 import UploadBar from "../components/UploadBar";
 import Loader from "../components/Loader";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const [videos, setVideos] = useState([]);
-  const [loading,setLoading] = useState(false)
+  // const videos = useSelector(state=>state.videos.videosList)
+  const [videos,setVideos] = useState([])
+  const[loading,setLoading] = useState(false)
+
   useEffect(() => {
     setLoading(true)
     videosApi
@@ -24,14 +27,13 @@ function Home() {
       })
   }, []);
 
-  
+  if(loading) return <p>Loading videos</p>
   return (
-    <div className="md:p-3">
+    <div className="mt-3 md:p-3">
       <Header/>
       <UploadBar/>
         <div className="md:grid md:grid-cols-9 lg:grid-cols-12 md:grid-rows-6 lg:grid-rows-9 gap-3 mt-5 pb-28 ">
-          {loading && <Loader><p>Loading Videos</p></Loader>}
-        {!loading && videos.map((video) => (
+        {videos.length && videos.map((video) => (
         <div key={video._id} className="col-span-3 row-span-3 pt-3">
           <VideoCard
           _id={video._id}

@@ -20,6 +20,7 @@ function RegisterPage() {
   const [error,setError] = useState(null);
 
   const handleSubmit = async (e) => {
+    e.preventDefault()
     e.target.disabled = true;
     if (data.password1 !== data.password) {
       setError("Wrong confirm password");
@@ -64,16 +65,16 @@ function RegisterPage() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center p-3">
+    <div className="w-screen min-h-screen flex flex-col justify-center items-center p-3">
       <div className="my-4 mt-10">
         <Logo />
       </div>
 
-      <p className="font-bold text-zinc-600">
+      <p className="font-bold text-zinc-600 text-center">
         Welcome to VideoLab, register yourself for first time
       </p>
 
-      <div className=" my-3 border p-3 md:p-5 rounded-lg shadow-md w-60 sm:w-72 md:w-[22rem]">
+      <form className=" my-3 border p-3 md:p-5 rounded-lg shadow-md w-60 sm:w-72 md:w-[22rem]" type="POST">
         <div className="mb-4">
           <label htmlFor="fullname" className=" font-semibold text-purple-800">
             Full name:
@@ -87,6 +88,7 @@ function RegisterPage() {
             placeholder="Arnab Jana"
             onChange={handleChange}
             value={data.fullName}
+            required
           />
         </div>
 
@@ -103,6 +105,7 @@ function RegisterPage() {
             placeholder="xyz@gmail.com"
             onChange={handleChange}
             value={data.email}
+            required
           />
         </div>
 
@@ -121,6 +124,7 @@ function RegisterPage() {
             onChange={handleChange}
             value={data.userName}
             maxLength={10}
+            required
           />
           <p className="text-sm opacity-45">
             * Your Channel name would be same as username
@@ -143,6 +147,7 @@ function RegisterPage() {
             accept="image/*"
             className="w-full outline-none border py-1 px-3 rounded-lg my-1"
             onChange={handleImageChange}
+            required
           />
           {imagePreview && (
             <div className="w-full">
@@ -161,9 +166,11 @@ function RegisterPage() {
             name="password1"
             type={showPassword ? "text" : "password"}
             className="w-full outline-none border py-1 px-3 rounded-lg my-1"
-            placeholder="password"
+            placeholder="minimum 6 characters"
             onChange={handleChange}
             value={data.password1}
+            minLength={6}
+            required
           />
           <button
             className="absolute bottom-3 right-2 text-sm opacity-50"
@@ -183,14 +190,16 @@ function RegisterPage() {
             name="password"
             type="text"
             className="w-full outline-none border py-1 px-3 rounded-lg my-1"
-            placeholder="password"
+            placeholder="confirm password"
             onChange={handleChange}
             value={data.password}
+            required
           />
         </div>
 
         <div className=" flex justify-center">
           <button
+          type="submit"
             className="px-3 py-1 bg-purple-600 text-white rounded-lg disabled:bg-purple-300 hover:bg-purple-400 font-semibold"
             onClick={handleSubmit}
           >
@@ -207,7 +216,7 @@ function RegisterPage() {
             Login here
           </span>
         </p>
-      </div>
+      </form>
     </div>
   );
 }

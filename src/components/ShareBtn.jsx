@@ -2,7 +2,7 @@ import React from 'react'
 import {useSelector} from "react-redux"
 
 function ShareBtn() {
-  const videoTitle = useSelector(state=>state.video.videoDetails.title)
+  const videoTitle = useSelector(state=>state.playedVideo.videoDetails.title)
   const handleShare = async () => {
     if (navigator.share) {
       try {

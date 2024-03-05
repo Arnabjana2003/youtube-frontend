@@ -15,6 +15,7 @@ import ViewChannel from './pages/ViewChannel.jsx'
 import UploadVideoPage from './pages/UploadVideoPage.jsx'
 import ProfilePage from './pages/ProfilePage.jsx'
 import SubscriptionPage from './pages/SubscriptionPage.jsx'
+import ResultPage from './pages/ResultPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/video/:channelId",
         element: <ViewChannel/>
+      },
+      {
+        path: "/videos/result",
+        element: <ResultPage/>
       },
       {
         path: "/login",

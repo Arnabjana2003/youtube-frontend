@@ -4,7 +4,7 @@ const initialState = {
     videoDetails: null
 }
 
-const videoSlice = createSlice({
+const playedVideoSlice = createSlice({
     name: "video",
     initialState,
     reducers:{
@@ -18,6 +18,6 @@ const videoSlice = createSlice({
     }
 })
 
-export const {videoDetails,likeVideo} = videoSlice.actions
-export default videoSlice.reducer
+export const {videoDetails,likeVideo} = playedVideoSlice.actions
+export default playedVideoSlice.reducer
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import likeApi from '../api/likeApi'
 import { useDispatch, useSelector } from 'react-redux'
-import { likeVideo } from '../store/videoSlice'
+import { likeVideo } from '../store/playedVideoSlice'
 
 function LikeBtn({id,type="video"}) {
   const dispatch = useDispatch()
   const authStatus = useSelector(state=>state.auth.authStatus)
-  const videoDetails = useSelector(state=>state.video.videoDetails)
+  const videoDetails = useSelector(state=>state.playedVideo.videoDetails)
 
   const handleClick = ()=>{
     if(!authStatus){
