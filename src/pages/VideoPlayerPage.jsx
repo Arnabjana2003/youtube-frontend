@@ -10,7 +10,7 @@ function VideoPlayerPage() {
   const {channelId,videoId} = useParams()
   // useEffect(()=>{},[channelId,videoId])
   return (
-    <div>
+    <div className='mt-12'>
       <Header/>
       <UploadBar/>
       <div className='md:grid grid-cols-12 gap-10'>

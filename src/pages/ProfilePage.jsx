@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 function ProfilePage() {
     const channelId = useSelector(state=>state.auth.authDetails?._id)
   return (
-    <div>
+    <div className=''>
         <ViewChannel id={channelId}/>
     </div>
   )

@@ -8,7 +8,7 @@ import Menu from '../components/Menu';
 function ResultPage() {
     const videos = useSelector(state=>state.videos.videosList)
     return (
-        <div className="mt-3 md:p-3">
+        <div className="mt-5 md:p-3">
           <Header/>
           <UploadBar/>
             <div className="md:grid md:grid-cols-9 lg:grid-cols-12 md:grid-rows-6 lg:grid-rows-9 gap-3 mt-5 pb-28 ">

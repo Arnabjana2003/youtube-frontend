@@ -57,7 +57,7 @@ function UploadVideoPage() {
     })
   }
   return (
-    <div className="w-full p-3">
+    <div className="w-full p-3 mt-10">
       <Header/>
       <UploadBar/>
       {!videoFile && (

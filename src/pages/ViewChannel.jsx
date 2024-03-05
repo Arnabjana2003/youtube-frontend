@@ -32,7 +32,7 @@ function ViewChannel({id}) {
     .finally(()=>setLoading(false))
   },[])
   return (
-    <div className="p-3">
+    <div className="p-3 mt-10">
       <Header/>
       <UploadBar/>
       <div className="mt-3 flex gap-3 items-center">
