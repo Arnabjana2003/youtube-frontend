@@ -3,7 +3,7 @@ import axios from 'axios'
 class LikeApi{
     likeVideo = async(videoId)=>{
         try{
-            return await axios.post(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/v1/like/likevideo`,{
+            return await axios.post(`https://youtubebackend-one.vercel.app/api/v1/like/likevideo`,{
                 videoId
             })
         }catch(err){
